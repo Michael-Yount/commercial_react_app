@@ -11,8 +11,7 @@ function NavbarComponent() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0);
-
+    
     const checkOut = async () => {
         await fetch('http://localhost:4000/checkout', {
             method: "POST",
@@ -24,11 +23,12 @@ function NavbarComponent() {
             return response.json();
         }).then((response) => {
             if(response.url) {
-                window.location.assign(response.url);
+                window.location.assign(response.url);//
             }
         })
     }
-
+    const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0);
+    
     return (
         <> 
         <Navbar expand="sm">
